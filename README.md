@@ -6,7 +6,6 @@ Repositório destinado à criação do Website relacionado ao curso ENG4O21 PROJ
 - CAROLINA DE ALMEIDA M CHAVES
 - RAFAELA ARAUJO DE SOUSA
 - BRENNO TAVORA BARBOSA
-- DANIEL DOS SANTOS FERREIRA
 - VINICIUS R M C DA SILVA
 
 ## Descrição do Projeto
