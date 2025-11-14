@@ -16,12 +16,16 @@
                 <i class="fas fa-user-circle user-icon" style="font-size: 1.8em;"></i>
                 <span>Olá, {{ user.first_name|default:user.username }}</span>
             </a>
-            <a href="{% url 'logout' %}" class="btn btn-ghost">Log-out</a>
+            <!-- Logout via POST -->
+            <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-ghost">Log-out</button>
+            </form>
         {% else %}
             <a class="btn btn-ghost" href="{% url 'login' %}">SIGN IN</a>
             <a class="btn btn-home-primary" href="{% url 'cadastro' %}">CADASTRAR</a>
         {% endif %}
-        
+
         <button class="btn btn-icon" aria-label="Buscar">🔍</button>
         <a class="btn btn-home-primary" href="#">SEU EVENTO</a>
       </div>
@@ -99,7 +103,6 @@
     <a class="btn btn-outline" href="{% url 'lista_eventos' %}">Veja mais</a>
   </div>
 {% endblock content %}
-
 
 {% block scripts %}
   <script>
