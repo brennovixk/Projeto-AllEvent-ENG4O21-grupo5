@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Lista de Eventos{% endblock %}
+
+{% block content %}
+<main class="events" style="width: min(1100px, 92vw); margin: 32px auto;">
+    <h2>
+        {% if termo_busca %}
+            Resultados para: "{{ termo_busca }}"
+        {% else %}
+            Todos os Eventos
+        {% endif %}
+    </h2>
+
+    <div class="event-grid" style="margin-top: 32px;">
+        {% for evento in eventos %}
+            <a class="event-card" href="{% url 'detalhe_evento' evento.id %}">
+                <img src="{{ evento.imagem.url }}" alt="{{ evento.nome }}" style="height: 220px; object-fit: cover;">
+                <div class="body">
+                    <div class="date-badge">{{ evento.data|date:"M d" }}</div>
+                    <div class="row"><div class="title">{{ evento.nome }}</div><div class="uf">{{ evento.localizacao|slice:":2" }}</div></div>
+                    <p class="desc">{{ evento.descricao|truncatewords:15 }}</p>
+                </div>
+            </a>
+        {% empty %}
+            <p>Nenhum evento encontrado.</p>
+        {% endfor %}
+    </div>
+</main>
+{% endblock content %}

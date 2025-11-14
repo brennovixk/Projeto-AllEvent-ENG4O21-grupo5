@@ -1,4 +1,4 @@
-{% extends 'MeuSite/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}Login - AllEvent{% endblock %}
@@ -14,19 +14,21 @@
     <div class="auth-card">
         <div class="auth-icon">👤</div>
         
+        {% if form.errors %}
+            <p style="color: red; margin-bottom: 10px;">E-mail ou senha incorretos. Tente novamente.</p>
+        {% endif %}
         {% if messages %}
             {% for message in messages %}
                 <p style="color: red; margin-bottom: 10px;">{{ message }}</p>
             {% endfor %}
         {% endif %}
 
-        <form class="auth-form" method="POST">
+        <form class="auth-form" method="POST" action="{% url 'login' %}">
             {% csrf_token %}
-            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="text" name="username" placeholder="E-mail (ou usuário)" required>
             <input type="password" name="password" placeholder="Senha" required>
             <button type="submit" class="btn btn-primary">ENTRAR</button>
             <a href="{% url 'cadastro' %}" class="btn btn-secondary">CADASTRAR-SE</a>
-            <button type="button" class="btn btn-secondary">ESQUECI A SENHA</button>
         </form>
     </div>
 </main>

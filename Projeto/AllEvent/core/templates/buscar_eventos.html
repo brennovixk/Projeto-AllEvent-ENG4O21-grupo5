@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Buscar Eventos{% endblock %}
+
+{% block content %}
+<main class="center" style="min-height:60vh">
+  <div class="simple-card">
+    <h1>Buscar Eventos</h1>
+    <p>Digite o nome do evento que você procura.</p>
+    <form action="{% url 'resultado_busca' %}" method="GET" class="auth-form" style="margin-top: 24px;">
+        <input type="text" name="termo_busca" placeholder="Ex: Show de Rock">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+  </div>
+</main>
+{% endblock content %}

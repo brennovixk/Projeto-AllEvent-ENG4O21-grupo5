@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ evento.nome }}{% endblock %}
+
+{% block content %}
+<main class="center" style="min-height:60vh">
+  <div class="simple-card" style="text-align: left; max-width: 800px;">
+    {% if evento.imagem %}
+        <img src="{{ evento.imagem.url }}" alt="{{ evento.nome }}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;">
+    {% endif %}
+    <h1 style="margin-top: 24px;">{{ evento.nome }}</h1>
+    <p><strong>Data:</strong> {{ evento.data|date:"d/m/Y" }}</p>
+    <p><strong>Local:</strong> {{ evento.localizacao }}</p>
+    <p style="margin-top: 16px;">{{ evento.descricao }}</p>
+    <br>
+    <p><a href="{% url 'home' %}">← Voltar para a home</a></p>
+  </div>
+</main>
+{% endblock content %}

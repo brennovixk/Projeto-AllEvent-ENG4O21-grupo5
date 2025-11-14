@@ -1,11 +1,6 @@
-{% extends 'MeuSite/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
-
 {% block title %}Favoritos - Perfil{% endblock %}
-
-{% block header %}
-    {{ block.super }}
-{% endblock header %}
 
 {% block content %}
 <main class="profile-container">
@@ -17,7 +12,6 @@
         </div>
         <a href="{% url 'logout' %}" class="nav-link logout-button">Log-out</a>
     </aside>
-
     <section class="profile-content">
         <h2>Favoritos</h2>
         <p>Aqui estão todos os eventos que você marcou como favoritos.</p>

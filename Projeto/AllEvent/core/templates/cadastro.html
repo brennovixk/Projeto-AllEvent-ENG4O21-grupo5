@@ -1,5 +1,4 @@
-
-{% extends 'MeuSite/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}Cadastro - AllEvent{% endblock %}
@@ -22,10 +21,10 @@
 
         <form class="auth-form" method="POST">
             {% csrf_token %}
-            <input type="text" name="nome" placeholder="Nome completo" required>
+            <input type="text" name="nome_completo" placeholder="Nome completo" required>
             <input type="email" name="email" placeholder="E-mail" required>
             <input type="password" name="password" placeholder="Senha" required>
-            <input type="password" name="confirm" placeholder="Confirme a senha" required>
+            <input type="password" name="password_confirm" placeholder="Confirme a senha" required>
             <button type="submit" class="btn btn-primary">CRIAR CONTA</button>
         </form>
     </div>

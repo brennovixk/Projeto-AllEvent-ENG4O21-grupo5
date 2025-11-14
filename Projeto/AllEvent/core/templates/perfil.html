@@ -1,11 +1,6 @@
-{% extends 'MeuSite/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
-
 {% block title %}Meu Perfil{% endblock %}
-
-{% block header %}
-    {{ block.super }}
-{% endblock header %}
 
 {% block content %}
 <main class="profile-container">
@@ -17,14 +12,12 @@
         </div>
         <a href="{% url 'logout' %}" class="nav-link logout-button">Log-out</a>
     </aside>
-
     <section class="profile-content">
         <h2>Bem-vindo ao seu Perfil</h2>
         <p>Selecione uma opção no menu ao lado para visualizar ou editar suas informações.</p>
         <br>
         <p>Nome: <strong>{{ user.first_name|default:"Não informado" }}</strong></p>
         <p>Email: <strong>{{ user.email }}</strong></p>
-        <p>Usuário: <strong>{{ user.username }}</strong></p>
     </section>
 </main>
 {% endblock content %}

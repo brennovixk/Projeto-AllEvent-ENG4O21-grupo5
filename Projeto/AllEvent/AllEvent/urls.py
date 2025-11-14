@@ -1,24 +1,33 @@
-# AllEvent/urls.py
+# Arquivo: AllEvent/AllEvent/urls.py
+# (CÓDIGO LIMPO - SEM ESPAÇOS INVÍSIVEIS)
+
 from django.contrib import admin
-from django.urls import path
-from AllEvent import views
+from django.urls import path, include
+from core import views
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
 
-    # Páginas principais
-    path('', views.home, name='home'),
-    path('lista/', views.lista_view, name='lista'),
-    path('event/', views.event_view, name='event'),
+    path('', views.home, name='home'), 
 
-    # Login / Logout / Cadastro
-    path('login/', views.login_view, name='login'),
-    path('logout/', views.logout_view, name='logout'),
-    path('cadastro/', views.cadastro_view, name='cadastro'),
+    path('cadastro/', views.cadastro, name='cadastro'),
 
-    # Páginas de Perfil (requerem login)
-    path('perfil/', views.perfil_view, name='perfil'), # Página principal do perfil
-    path('perfil/editar/', views.editar_dados_view, name='editar_dados'),
+    path('perfil/', views.perfil_view, name='perfil'),
+    path('perfil/editar/', views.editar_dados, name='editar_dados'),
     path('perfil/favoritos/', views.favoritos_view, name='favoritos'),
     path('perfil/preferencias/', views.preferencias_view, name='preferencias'),
+
+    path('eventos/', views.lista_eventos, name='lista_eventos'),
+    path('eventos/buscar/', views.buscar_eventos, name='buscar_eventos'),
+    path('eventos/resultado/', views.resultado_busca, name='resultado_busca'),
+    path('evento/<int:evento_id>/', views.detalhe_evento, name='detalhe_evento'),
 ]
+
+if settings.DEBUG:
+    # CORREÇÃO IMPORTANTE: Adicionei o static() para o CSS funcionar
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

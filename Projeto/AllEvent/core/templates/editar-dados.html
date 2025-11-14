@@ -1,11 +1,6 @@
-{% extends 'MeuSite/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
-
 {% block title %}Editar Dados - Perfil{% endblock %}
-
-{% block header %}
-    {{ block.super }}
-{% endblock header %}
 
 {% block content %}
 <main class="profile-container">
@@ -17,7 +12,6 @@
         </div>
         <a href="{% url 'logout' %}" class="nav-link logout-button">Log-out</a>
     </aside>
-
     <section class="profile-content">
         <h2>Editar Dados</h2>
         
@@ -38,6 +32,10 @@
             <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="email" id="email" name="email" value="{{ user.email }}">
+            </div>
+            <div class="form-group">
+                <label for="current_password">Senha Atual</label>
+                <input type="password" id="current_password" name="current_password" placeholder="Digite sua senha atual" required>
             </div>
              <div class="form-group">
                 <label for="password">Nova Senha</label>
